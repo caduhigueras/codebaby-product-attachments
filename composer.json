@@ -9,7 +9,7 @@
             "homepage": "https://codebaby.tech"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
