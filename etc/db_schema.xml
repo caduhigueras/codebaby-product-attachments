@@ -1,0 +1,14 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- reference:  https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/db-schema.html-->
+    <table name="codebaby_product_attachments" resource="default" engine="innodb" charset="utf8" comment="Product Attachments Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="Product Upload File Id" identity="true" />
+        <column xsi:type="int" name="related_product" padding="10" unsigned="true" nullable="false" comment="Related Product Id" />
+        <column xsi:type="int" name="store_id" padding="10" unsigned="true" nullable="false" comment="Store Id" />
+        <column xsi:type="text" name="serialized_uploaded_files" nullable="true" />
+        <!-- Define Primary Key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CODEBABY_PRODUCT_ATTACHMENTS_RELATED_PRODUCT_CATALOG_PRODUCT_ENTITY_ENTITY_ID" table="codebaby_product_attachments" column="related_product" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>
