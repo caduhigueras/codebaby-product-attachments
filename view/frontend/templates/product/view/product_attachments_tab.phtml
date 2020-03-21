@@ -1,0 +1,7 @@
+<?php
+$productAttachments = $block->getProductAttachments(); ?>
+<ul class="codebaby_product_attachments_files <?php echo $block->getCustomLayout() ?>">
+    <?php foreach ($productAttachments as $productAttachment) { ?>
+        <li class="codebaby_file codebaby_file_<?php echo $block->getFileIcon($productAttachment['file'][0]['name']) ?>"><a href="<?php echo $productAttachment['file'][0]['url'] ?>"><?php echo $productAttachment['file_title'] ?></a></li>
+    <?php } ?>
+</ul>

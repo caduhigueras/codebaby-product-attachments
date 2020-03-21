@@ -21,6 +21,13 @@ class Attachments extends Template
      */
     private $serializer;
 
+    /**
+     * Attachments constructor.
+     * @param JsonSerializer $serializer
+     * @param ProductFileUploadRepositoryInterface $productFileUploadRepository
+     * @param Template\Context $context
+     * @param array $data
+     */
     public function __construct(
         JsonSerializer $serializer,
         ProductFileUploadRepositoryInterface $productFileUploadRepository,
@@ -41,11 +48,19 @@ class Attachments extends Template
         return $this->context->getRequest()->getParam('id');
     }
 
+    /**
+     * @return int
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getStoreId()
     {
         return $this->context->getStoreManager()->getStore()->getId();
     }
 
+    /**
+     * @return array|bool|float|int|mixed|string|null
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getProductAttachments()
     {
         $productAttachments = $this->productFileUploadRepository->getByRelatedProduct($this->getProductId());
@@ -55,6 +70,10 @@ class Attachments extends Template
         return false;
     }
 
+    /**
+     * @param $productName
+     * @return string
+     */
     public function getFileIcon($productName)
     {
         $icons = ['png', 'jpg', 'jpeg', 'doc', 'pdf', 'xls', 'xlsx', 'csv', 'avi', 'mkv', 'mp4', 'zip', 'txt'];
@@ -69,6 +88,20 @@ class Attachments extends Template
                 return 'xls';
             }
             return strtolower($extension);
+        }
+    }
+
+    /**
+     * 1- rows | 2- columns
+     * @return string
+     */
+    public function getCustomLayout()
+    {
+        $layout = $this->context->getScopeConfig()->getValue('product_attachments/attachment_settings/custom_layout');
+        if ($layout === '1') {
+            return 'rows-layout';
+        } else {
+            return 'columns-layout';
         }
     }
 

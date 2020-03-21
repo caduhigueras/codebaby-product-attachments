@@ -1,64 +1,90 @@
 #codebaby_product_attachments {
-  >h2{
+  > h2 {
     font-size: 2rem;
-    padding-left:35px;
+    padding-left: 35px;
   }
   border: 1px solid #cccccc;
-  .codebaby_product_attachments_files {
+}
+.codebaby_product_attachments_files.rows-layout{
+  display: flex;
+  padding: 35px 35px 35px 35px;
+  flex-direction: column;
+  margin-bottom: 0;
+  .codebaby_file{
+    background-position: left center;
+    padding: 20px 0;
+    border-bottom: 1px solid #d3d1d1;
+    list-style:none;
+    width: 100%;
+    height: 65px;
     display: flex;
-    padding: 35px 35px 35px 35px;
-    .codebaby_file {
-      >a {
-        padding-left: 85px;
-      }
-      list-style:none;
-      width: 100%;
-      height: 65px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    >a {
+      padding-left: 85px;
     }
-    .codebaby_file_generic{
-      background:url(../images/generic.png) no-repeat left center;
-    }
-    .codebaby_file_png{
-      background:url(../images/png.png) no-repeat left center;
-    }
-    .codebaby_file_jpg{
-      background:url(../images/jpg.png) no-repeat left center;
-    }
-    .codebaby_file_jpeg{
-      background:url(../images/jpeg.png) no-repeat left center;
-    }
-    .codebaby_file_doc{
-      background:url(../images/doc.png) no-repeat left center;
-    }
-    .codebaby_file_pdf{
-      background:url(../images/pdf.png) no-repeat left center;
-    }
-    .codebaby_file_xls{
-      background:url(../images/xls.png) no-repeat left center;
-    }
-    .codebaby_file_xlsx{
-      background:url(../images/xlsx.png) no-repeat left center;
-    }
-    .codebaby_file_csv{
-      background:url(../images/csv.png) no-repeat left center;
-    }
-    .codebaby_file_avi{
-      background:url(../images/avi.png) no-repeat left center;
-    }
-    .codebaby_file_mkv{
-      background:url(../images/mkv.png) no-repeat left center;
-    }
-    .codebaby_file_mp4{
-      background:url(../images/mp4.png) no-repeat left center;
-    }
-    .codebaby_file_zip{
-      background:url(../images/zip.png) no-repeat left center;
-    }
-    .codebaby_file_txt{
-      background:url(../images/txt.png) no-repeat left center;
+    &:last-child {
+      border-bottom: none;
     }
   }
+}
+.codebaby_product_attachments_files.columns-layout{
+  display: flex;
+  padding: 35px 35px 35px 35px;
+  flex-direction: row;
+  .codebaby_file{
+    background-position: center center;
+    >a {
+      padding-top: 130px;
+      text-align: center;
+    }
+    list-style:none;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.codebaby_file_generic{
+  background:url(../images/generic.png) no-repeat;
+}
+.codebaby_file_png{
+  background:url(../images/png.png) no-repeat;
+}
+.codebaby_file_jpg{
+  background:url(../images/jpg.png) no-repeat;
+}
+.codebaby_file_jpeg{
+  background:url(../images/jpeg.png) no-repeat;
+}
+.codebaby_file_doc{
+  background:url(../images/doc.png) no-repeat;
+}
+.codebaby_file_pdf{
+  background:url(../images/pdf.png) no-repeat;
+}
+.codebaby_file_xls{
+  background:url(../images/xls.png) no-repeat;
+}
+.codebaby_file_xlsx{
+  background:url(../images/xlsx.png) no-repeat;
+}
+.codebaby_file_csv{
+  background:url(../images/csv.png) no-repeat;
+}
+.codebaby_file_avi{
+  background:url(../images/avi.png) no-repeat;
+}
+.codebaby_file_mkv{
+  background:url(../images/mkv.png) no-repeat;
+}
+.codebaby_file_mp4{
+  background:url(../images/mp4.png) no-repeat;
+}
+.codebaby_file_zip{
+  background:url(../images/zip.png) no-repeat;
+}
+.codebaby_file_txt{
+  background:url(../images/txt.png) no-repeat;
 }

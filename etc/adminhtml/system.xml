@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="codebaby" translate="label" sortOrder="10000">
+            <label>Product Attachments Settings</label>
+        </tab>
+        <section id="product_attachments" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Product_Attachments</label>
+            <tab>codebaby</tab>
+            <resource>CodeBaby_ProductAttachments::attachments</resource>
+            <group id="attachment_settings" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Display Settings</label>
+                <field id="add_to_details_tab" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Add to Product Details Tab?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_bellow_details" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Add Bellow Product Details?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_layout" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>How should the files be displayed?</label>
+                    <source_model>CodeBaby\ProductAttachments\Model\Config\Source\LayoutTypes</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
