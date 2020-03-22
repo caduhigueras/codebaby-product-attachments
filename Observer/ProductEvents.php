@@ -127,6 +127,10 @@ class ProductEvents implements ObserverInterface
 //        $this->fileProcessor->mvImgFromTmp();
     }
 
+    /**
+     * @param $productId
+     * @return mixed
+     */
     public function fileUploadExists($productId)
     {
         return $this->productFileUploadRepository->getByRelatedProduct($productId);
@@ -189,6 +193,11 @@ class ProductEvents implements ObserverInterface
 //        return $difItems;
     }
 
+    /**
+     * @param $searchThis
+     * @param $searchIn
+     * @return bool
+     */
     public function findDeletedInArray($searchThis, $searchIn)
     {
 //        $difItems = [];
@@ -204,12 +213,19 @@ class ProductEvents implements ObserverInterface
 //        return $difItems;
     }
 
+    /**
+     * @param $productUpload
+     */
     public function deleteFileUpload($productUpload)
     {
         $this->productFileUploadRepository->deleteById($productUpload->getId());
         //must remove physical file also
     }
 
+    /**
+     * @param $productUploadId
+     * @param $fileDif
+     */
     public function updateFileUpload($productUploadId, $fileDif)
     {
         $productUpload = $this->productFileUploadRepository->getById($productUploadId);
@@ -218,8 +234,8 @@ class ProductEvents implements ObserverInterface
             $data = [];
             $data['record_id'] = $file['record_id'];
             $data['file_title'] = $file['file_title'];
-            $data['file_external_url'] = $file['file_external_url'];
-            $data['file_select_type'] = $file['file_select_type'];
+//            $data['file_external_url'] = $file['file_external_url'];
+//            $data['file_select_type'] = $file['file_select_type'];
             $data['file'] = $file['file'];
             $data['initialize'] = "true";
             array_push($newData, $data);

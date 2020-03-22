@@ -122,12 +122,14 @@ class ProductFileUploadRepository implements ProductFileUploadRepositoryInterfac
     /**
      * @param $relatedProduct
      * @return bool|mixed
+     * @throws NoSuchEntityException
      */
     public function getByRelatedProduct($relatedProduct)
     {
         //TODO: implement store search too
         $collection = $this->collectionFactory->create();
         $collection->addFieldToFilter('related_product', ['eq' => $relatedProduct]);
+        $collection->addFieldToFilter('store_id', ['eq' => $this->storeManager->getStore()->getId()]);
         $item = $collection->getFirstItem();
         if ($item->getId()) {
             return $item;
