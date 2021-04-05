@@ -129,7 +129,6 @@ class ProductFileUploadRepository implements ProductFileUploadRepositoryInterfac
         //TODO: implement store search too
         $collection = $this->collectionFactory->create();
         $collection->addFieldToFilter('related_product', ['eq' => $relatedProduct]);
-        $collection->addFieldToFilter('store_id', ['eq' => $this->storeManager->getStore()->getId()]);
         $item = $collection->getFirstItem();
         if ($item->getId()) {
             return $item;
