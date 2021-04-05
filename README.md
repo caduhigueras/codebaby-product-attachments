@@ -20,3 +20,18 @@ After installation, run the following commands:
 (if on developer mode)
 
 `bin/magento c:f`
+
+# Display Files on Product Page:
+To display the files, go to `Store > Configuration > CodeBaby Settings > Product_Attachments` and enable display on the desired position
+
+#Display in custom location using xml:
+Add this block to the desired xml node:
+
+```xml
+<block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="cb.product.files.tab"  template="CodeBaby_ProductAttachments::product/view/product_attachments_tab.phtml" group="detailed_info">
+    <arguments>
+        <argument translate="true" name="title" xsi:type="string">Product Attachments</argument>
+        <argument name="sort_order" xsi:type="string">100</argument>
+    </arguments>
+</block>
+``
