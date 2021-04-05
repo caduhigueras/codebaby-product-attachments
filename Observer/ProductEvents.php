@@ -110,8 +110,8 @@ class ProductEvents implements ObserverInterface
             $newDestProductUpload = $this->fileProcessor->mvImgFromTmp($productUpload['file'], $dir, $dirType);
             $finalDirFiles['record_id'] = $productUpload['record_id'];
             $finalDirFiles['file_title'] = $productUpload['file_title'];
-            $finalDirFiles['file_external_url'] = $productUpload['file_external_url'];
-            $finalDirFiles['file_select_type'] = $productUpload['file_select_type'];
+            $finalDirFiles['file_external_url'] = isset($productUpload['file_external_url']) ? $productUpload['file_external_url'] : null;
+            $finalDirFiles['file_select_type'] = isset($productUpload['file_select_type']) ? $productUpload['file_select_type'] : null;
             $finalDirFiles['file'] = $newDestProductUpload;
             $finalDirFiles['initialize'] = "true";
             array_push($productUploadsFinalDir, $finalDirFiles);
@@ -234,8 +234,8 @@ class ProductEvents implements ObserverInterface
             $data = [];
             $data['record_id'] = $file['record_id'];
             $data['file_title'] = $file['file_title'];
-//            $data['file_external_url'] = $file['file_external_url'];
-//            $data['file_select_type'] = $file['file_select_type'];
+            $data['file_external_url'] = isset($file['file_external_url']) ? $file['file_external_url'] : null;
+            $data['file_select_type'] = isset($file['file_select_type']) ? $file['file_select_type'] : null;
             $data['file'] = $file['file'];
             $data['initialize'] = "true";
             array_push($newData, $data);
