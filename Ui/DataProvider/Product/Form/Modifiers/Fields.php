@@ -54,7 +54,14 @@ class Fields extends AbstractModifier
         $productId = $product->getId();
         $productFileUpload = $this->productFileUploadRepository->getByRelatedProduct($productId);
         if ($productFileUpload) {
-            $data[strval($productId)]['product']['code_baby_product_attachments_fieldset']['product_attachments_field'] = $this->json->unserialize($productFileUpload->getSerializedUploadedFiles());
+            $unserializedDataArr = [];
+            $rawUnserializedDataArr = $this->json->unserialize($productFileUpload->getSerializedUploadedFiles());
+            foreach ($rawUnserializedDataArr as $itemData) {
+                $itemData['store_id'] = explode(',', $itemData['storeviews']);
+                $itemData['is_active'] = filter_var($itemData['is_active'], FILTER_VALIDATE_BOOLEAN);
+                array_push($unserializedDataArr, $itemData);
+            }
+            $data[strval($productId)]['product']['code_baby_product_attachments_fieldset']['product_attachments_field'] = $unserializedDataArr;
         }
         return $data;
     }
