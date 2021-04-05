@@ -55,6 +55,52 @@
                         </validation>
                     </settings>
                 </field>
+                <field name="storeviews" formElement="multiselect">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">page</item>
+                            <item name="default" xsi:type="number">0</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>int</dataType>
+                        <tooltip>
+                            <link>https://docs.magento.com/user-guide/configuration/scope.html</link>
+                            <description>What is this?</description>
+                        </tooltip>
+                        <label translate="true">Store View</label>
+                        <dataScope>store_id</dataScope>
+                    </settings>
+                    <formElements>
+                        <multiselect>
+                            <settings>
+                                <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                            </settings>
+                        </multiselect>
+                    </formElements>
+                </field>
+                <field name="is_active" formElement="checkbox">
+                    <settings>
+                        <label translate="true">Enabled</label>
+                        <tooltip>
+                            <description translate="true">This is my checkbox's description</description>
+                        </tooltip>
+                    </settings>
+                    <formElements>
+                        <checkbox>
+                            <settings>
+                                <prefer>toggle</prefer>
+                                <valueMap>
+                                    <map name="false" xsi:type="boolean">false</map>
+                                    <map name="true" xsi:type="boolean">true</map>
+                                </valueMap>
+                            </settings>
+                        </checkbox>
+                    </formElements>
+                </field>
                 <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
