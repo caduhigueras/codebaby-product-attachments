@@ -28,10 +28,10 @@ To display the files, go to `Store > Configuration > CodeBaby Settings > Product
 Add this block to the desired xml node:
 
 ```xml
-<block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="cb.product.files.tab"  template="CodeBaby_ProductAttachments::product/view/product_attachments_tab.phtml" group="detailed_info">
+<block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="cb.product.files.tab"  template="CodeBaby_ProductAttachments::product/view/product_attachments_tab.phtml">
     <arguments>
         <argument translate="true" name="title" xsi:type="string">Product Attachments</argument>
         <argument name="sort_order" xsi:type="string">100</argument>
     </arguments>
 </block>
-``
+```
