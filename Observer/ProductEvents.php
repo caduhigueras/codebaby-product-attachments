@@ -110,6 +110,9 @@ class ProductEvents implements ObserverInterface
             $newDestProductUpload = $this->fileProcessor->mvImgFromTmp($productUpload['file'], $dir, $dirType);
             $finalDirFiles['record_id'] = $productUpload['record_id'];
             $finalDirFiles['file_title'] = $productUpload['file_title'];
+            $storeviews = implode(',', $productUpload['store_id']);
+            $finalDirFiles['storeviews'] = $storeviews;
+            $finalDirFiles['is_active'] = $productUpload['is_active'];
             $finalDirFiles['file_external_url'] = isset($productUpload['file_external_url']) ? $productUpload['file_external_url'] : null;
             $finalDirFiles['file_select_type'] = isset($productUpload['file_select_type']) ? $productUpload['file_select_type'] : null;
             $finalDirFiles['file'] = $newDestProductUpload;
@@ -117,8 +120,10 @@ class ProductEvents implements ObserverInterface
             array_push($productUploadsFinalDir, $finalDirFiles);
         }
         //$productUploadsFinalDir['serialized_uploaded_files'] = $this->json->serialize($finalDirFiles);
+        //todo: remove storeId, since will no longer be used here
+        $storeId = (int) $this->context->getRequest()->getParam('store', 0);
         $data = [
-            'store_id' => '0',
+            'store_id' => $storeId,
             'related_product' => $productId,
             'serialized_uploaded_files' => $this->json->serialize($productUploadsFinalDir)
         ];
@@ -234,6 +239,9 @@ class ProductEvents implements ObserverInterface
             $data = [];
             $data['record_id'] = $file['record_id'];
             $data['file_title'] = $file['file_title'];
+            $storeviews = implode(',', $file['store_id']);
+            $data['storeviews'] = $storeviews;
+            $data['is_active'] = $file['is_active'];
             $data['file_external_url'] = isset($file['file_external_url']) ? $file['file_external_url'] : null;
             $data['file_select_type'] = isset($file['file_select_type']) ? $file['file_select_type'] : null;
             $data['file'] = $file['file'];

@@ -64,7 +64,7 @@ class Attachments extends Template
     public function getProductAttachments()
     {
         $productAttachments = $this->productFileUploadRepository->getByRelatedProduct($this->getProductId());
-        if ($productAttachments->getStoreId() === "0" || $productAttachments->getStoreId() === $this->getStoreId()) {
+        if ($productAttachments) {
             return $this->serializer->unserialize($productAttachments->getSerializedUploadedFiles());
         }
         return false;
