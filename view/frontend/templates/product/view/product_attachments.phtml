@@ -1,10 +1,15 @@
 <?php
+/** @var \CodeBaby\ProductAttachments\Block\Product\View\Attachments $block */
 $productAttachments = $block->getProductAttachments(); ?>
 <div id="codebaby_product_attachments" class="product data items">
     <h2><?php echo __('Product Attachments'); ?></h2>
     <ul class="codebaby_product_attachments_files <?php echo $block->getCustomLayout() ?>">
         <?php foreach ($productAttachments as $productAttachment) { ?>
-            <li class="codebaby_file codebaby_file_<?php echo $block->getFileIcon($productAttachment['file'][0]['name']) ?>"><a href="<?php echo $productAttachment['file'][0]['url'] ?>"><?php echo $productAttachment['file_title'] ?></a></li>
+            <?php if (filter_var($productAttachment['is_active'], FILTER_VALIDATE_BOOLEAN)): ?>
+                <?php if ($productAttachment['storeviews'] === "0" || in_array($block->getStoreId(), explode(',', $productAttachment['storeviews']))): ?>
+                    <li class="codebaby_file codebaby_file_<?php echo $block->getFileIcon($productAttachment['file'][0]['name']) ?>"><a href="<?php echo $productAttachment['file'][0]['url'] ?>"><?php echo $productAttachment['file_title'] ?></a></li>
+                <?php endif; ?>
+            <?php endif; ?>
         <?php } ?>
     </ul>
 </div>
