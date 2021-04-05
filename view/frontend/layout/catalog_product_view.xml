@@ -5,7 +5,7 @@
             <block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="product_attachments.tab" as="product_attachments" template="CodeBaby_ProductAttachments::product/view/product_attachments.phtml" after="product.info.details" ifconfig="product_attachments/attachment_settings/add_bellow_details" />
         </referenceContainer>
         <referenceBlock name="product.info.details">
-            <block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="test.tab"  template="CodeBaby_ProductAttachments::product/view/product_attachments_tab.phtml" group="detailed_info" ifconfig="product_attachments/attachment_settings/add_to_details_tab">
+            <block class="CodeBaby\ProductAttachments\Block\Product\View\Attachments" name="cb.product.files.tab"  template="CodeBaby_ProductAttachments::product/view/product_attachments_tab.phtml" group="detailed_info" ifconfig="product_attachments/attachment_settings/add_to_details_tab">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Product Attachments</argument>
                     <argument name="sort_order" xsi:type="string">100</argument>
