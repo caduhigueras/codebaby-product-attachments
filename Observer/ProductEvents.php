@@ -67,30 +67,34 @@ class ProductEvents implements ObserverInterface
      * Below is the method that will fire whenever the event runs!
      *
      * @param Observer $observer
+     * @return ProductEvents
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function execute(Observer $observer)
     {
+        $product = $observer->getProduct();
+        $id = $product->getId();
         $params = $this->_request->getParams();
         //check if there are any files uploaded
         if (isset($params['product']['code_baby_product_attachments_fieldset']['product_attachments_field'])) {
             $customFieldData = $params['product']['code_baby_product_attachments_fieldset']['product_attachments_field'];
-            $previousFileUpload = $this->fileUploadExists($params['id']);
+            $previousFileUpload = $this->fileUploadExists($id);
             if ($previousFileUpload) {
                 $fileDif = $this->searchForDifferences($previousFileUpload, $customFieldData);
                 if ($fileDif) {
                     $this->updateFileUpload($previousFileUpload->getId(), $fileDif);
                 }
             } else {
-                $this->saveFileUploadRelation($customFieldData, $params['id']);
+                $this->saveFileUploadRelation($customFieldData, $id);
             }
             //if upload input is empty, check if file uploads existed before and delete them
         } else {
-            $fileUploads = $this->fileUploadExists($params['id']);
+            $fileUploads = $this->fileUploadExists($id);
             if ($fileUploads) {
                 $this->deleteFileUpload($fileUploads);
             }
         }
+        return $this;
     }
 
     /**
